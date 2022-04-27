@@ -51,7 +51,9 @@ func BacktraceMultiHop(paris []TokenPair, src string, dst string, step uint32) [
 		for _, token := range tokens {
 			if step == 0 {
 				if dst == token.Token1Symbol {
-					result = append(result, append(mid, dst))
+					ret := make([]string, len(mid)+1)
+					copy(ret, append(mid, dst))
+					result = append(result, ret)
 					return
 				}
 				continue
